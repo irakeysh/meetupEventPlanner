@@ -21,12 +21,22 @@ angular.module('eventPlannerApp')
   function LoginCtrl($scope, $rootScope, $location, APP_SETTINGS, $firebaseAuth) {
     var auth = firebase.auth();
     $scope.registerUser = function(){
-    	auth.createUserWithEmailAndPassword($scope.email,$scope.password)
+    	auth.createUserWithEmailAndPassword($scope.newUserEmail,$scope.newUserPassword)
     			.then(function(userData){
     				console.log("User Registration successfull with the following details",userData.uid)
     			})
     			.catch(function(error){
     				console.log("Error with the error:",error);
     			})
+    };
+
+    $scope.loginUser = function(){
+      auth.signInWithEmailAndPassword($scope.activeUserEmail,$scope.activeUserPassword)
+          .then(function(userData){
+            console.log("User Login successfull with the following details",userData.uid)
+          })
+          .catch(function(error){
+            console.log("Error with the error:",error);
+          })
     };
 };

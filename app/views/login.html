@@ -4,11 +4,21 @@
       <input type="text" name="fullname" ng-model="fullname">
    </label>
    <label>Email:
-     <input type="email" name="email" ng-model="email">
+     <input type="email" name="email" ng-model="newUserEmail">
    </label>
    <label>Password:
-     <input type="password" name="password" ng-model="password">
+     <input type="password" name="password" ng-model="newUserPassword">
    </label>
    <button type="submit" ng-click="registerUser()">Register Now!</button>
+  </form>
+
+  <form name="login">
+   <label>Email:
+     <input type="email" name="email" ng-model="activeUserEmail">
+   </label>
+   <label>Password:
+     <input type="password" name="password" ng-model="activeUserPassword">
+   </label>
+   <button type="submit" ng-click="loginUser()">Log In</button>
   </form>
 </div>
