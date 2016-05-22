@@ -23,7 +23,8 @@ angular.module('eventPlannerApp')
     $scope.registerUser = function(){
     	auth.createUserWithEmailAndPassword($scope.newUserEmail,$scope.newUserPassword)
     			.then(function(userData){
-    				console.log("User Registration successfull with the following details",userData.uid)
+    				console.log("User Registration successfull with the following details",userData.uid);
+            
     			})
     			.catch(function(error){
     				console.log("Error with the error:",error);

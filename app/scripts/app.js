@@ -12,5 +12,6 @@ angular
   .module('eventPlannerApp', [
     'ngAnimate',
     'ngAria',
-    'firebase'
+    'firebase',
+    'ui.router'
   ]);
