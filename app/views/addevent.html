@@ -1,1 +1,21 @@
 <p>This is the addevent view.</p>
+<div ng-controller="AddeventCtrl">
+	<form name="addEvent">
+	<label for="eventName">Name of Event:
+		<input type="text" id="eventName" ng-model="eventName" required>
+	</label>
+	<label for="hostName">Host:
+		<input type="text" id="hostName" ng-model="hostName" required>
+	</label>
+	<label for="startDate">Starts:
+		<input type="datetime" id="startDate" ng-model="startDateTime" required>
+	</label>
+	<label for="endDate">Ends:
+		<input type="datetime" id="endDate" ng-model="endDateTime" required>
+	</label>
+	<label for="eventTheme">Theme:
+		<input type="text" id="eventTheme" ng-model="eventTheme" required>
+	</label>
+	<button ng-click="uploadEvent()">Upload Event</button>		
+	</form>
+</div>

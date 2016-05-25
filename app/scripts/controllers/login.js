@@ -1,12 +1,5 @@
 'use strict';
-  // Initialize Firebase
-  var config = {
-    apiKey: "AIzaSyCkOXCIoGyQBjD3tLwYESnADkA5d_YzccI",
-    authDomain: "meetupeventplanner-84795.firebaseapp.com",
-    databaseURL: "https://meetupeventplanner-84795.firebaseio.com",
-    storageBucket: "meetupeventplanner-84795.appspot.com",
-  };
-  firebase.initializeApp(config);
+ 
 /**
  * @ngdoc function
  * @name eventPlannerApp.controller:LoginCtrl
@@ -16,15 +9,21 @@
  */
 angular.module('eventPlannerApp')
   .controller('LoginCtrl',LoginCtrl);
-  LoginCtrl.$inject = ['$scope', '$rootScope', '$location', 'APP_SETTINGS', '$firebaseAuth','$state'];
+  LoginCtrl.$inject = ['$scope', '$rootScope', '$location', 'APP_SETTINGS', '$firebaseAuth','$state','$firebaseObject'];
 
-  function LoginCtrl($scope, $rootScope, $location, APP_SETTINGS, $firebaseAuth,$state) {
+  function LoginCtrl($scope, $rootScope, $location, APP_SETTINGS, $firebaseAuth,$state,$firebaseObject) {
+    $rootScope.userId = null;
     var auth = firebase.auth();
     $scope.registerUser = function(){
     	auth.createUserWithEmailAndPassword($scope.newUserEmail,$scope.newUserPassword)
     			.then(function(userData){
     				console.log("User Registration successfull with the following details",userData.uid);
-             $state.go('home');
+            var addUserInEventsDb = firebase.database().ref().child('events');
+            addUserInEventsDb.set({
+              id:userData.uid
+            })
+            $rootScope.userId = userData.uid;
+             $state.go('addevent');
             
     			})
     			.catch(function(error){
@@ -36,7 +35,8 @@ angular.module('eventPlannerApp')
       auth.signInWithEmailAndPassword($scope.activeUserEmail,$scope.activeUserPassword)
           .then(function(userData){
             console.log("User Login successfull with the following details",userData.uid);
-            $state.go('home');
+             $rootScope.userId = userData.uid;
+            $state.go('addevent');
           })
           .catch(function(error){
             console.log("Error with the error:",error);
