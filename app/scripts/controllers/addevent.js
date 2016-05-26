@@ -14,7 +14,6 @@ angular.module('eventPlannerApp')
   AddeventCtrl.$inject = ['$scope','$firebaseObject','$rootScope'];
 
   function AddeventCtrl($scope,$firebaseObject,$rootScope){
-  	console.log($rootScope.userId);
   	$scope.uploadEvent = function(){
   		console.log("Event uplaod initiated");
   		var addEvent = firebase.database().ref().child('events').child($rootScope.userId);

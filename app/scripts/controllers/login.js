@@ -7,6 +7,9 @@
  * # LoginCtrl
  * Controller of the eventPlannerApp
  */
+ angular.module('eventPlannerApp').run(function($rootScope){
+  $rootScope.userId = null;
+ })
 angular.module('eventPlannerApp')
   .controller('LoginCtrl',LoginCtrl);
   LoginCtrl.$inject = ['$scope', '$rootScope', '$location', 'APP_SETTINGS', '$firebaseAuth','$state','$firebaseObject'];
