@@ -24,3 +24,5 @@ angular
             templateUrl: "../views/addevent.html"
         })
     })
+
+    

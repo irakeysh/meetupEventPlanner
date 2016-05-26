@@ -16,11 +16,12 @@ angular.module('eventPlannerApp')
   function AddeventCtrl($scope,$firebaseObject,$rootScope){
   	$scope.uploadEvent = function(){
   		console.log("Event uplaod initiated");
-  		var addEvent = firebase.database().ref().child('events').child($rootScope.userId);
+  		var addEvent = firebase.database().ref().child('events').child(localStorage.getItem("activeUser"));
   	addEvent.push({
-  		eventname:"Action",
-  		performer:"Sana Khan"
-  	})
-
-  	}
-    }
+  		eventname:$scope.eventName,
+        host:$scope.hostName,
+        starts:$scope.startDateTime,
+        ends:$scope.endDateTime,
+        theme:$scope.eventTheme
+    })
+  	}}

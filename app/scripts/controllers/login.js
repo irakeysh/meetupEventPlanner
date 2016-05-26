@@ -25,7 +25,7 @@ angular.module('eventPlannerApp')
             addUserInEventsDb.set({
               id:userData.uid
             })
-            $rootScope.userId = userData.uid;
+            localStorage.setItem("activeUser",userData.uid);
              $state.go('addevent');
             
     			})
