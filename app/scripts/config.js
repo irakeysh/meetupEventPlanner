@@ -11,3 +11,8 @@
     storageBucket: "meetupeventplanner-84795.appspot.com",
   };
   firebase.initializeApp(config);
+
+  angular.module('eventPlannerApp')
+         .run(function($rootScope){
+          $rootScope.events=[];
+         });

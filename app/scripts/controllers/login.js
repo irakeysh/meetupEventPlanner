@@ -15,7 +15,6 @@ angular.module('eventPlannerApp')
   LoginCtrl.$inject = ['$scope', '$rootScope', '$location', 'APP_SETTINGS', '$firebaseAuth','$state','$firebaseObject'];
 
   function LoginCtrl($scope, $rootScope, $location, APP_SETTINGS, $firebaseAuth,$state,$firebaseObject) {
-    $rootScope.userId = null;
     var auth = firebase.auth();
     $scope.registerUser = function(){
     	auth.createUserWithEmailAndPassword($scope.newUserEmail,$scope.newUserPassword)
@@ -25,7 +24,7 @@ angular.module('eventPlannerApp')
             addUserInEventsDb.set({
               id:userData.uid
             })
-            localStorage.setItem("activeUser",userData.uid);
+            $rootScope.userId = userData.uid;
              $state.go('addevent');
             
     			})
