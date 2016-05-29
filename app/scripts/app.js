@@ -13,5 +13,6 @@ angular
     'ngAnimate',
     'ngAria',
     'firebase',
-    'ui.router'
+    'ui.router',
+    'ngMaterial'
   ]);
