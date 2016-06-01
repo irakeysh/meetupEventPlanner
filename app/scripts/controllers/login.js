@@ -9,6 +9,7 @@
  */
  angular.module('eventPlannerApp').run(function($rootScope){
   $rootScope.userId = null;
+  $rootScope.userName = null;
  })
 angular.module('eventPlannerApp')
   .controller('LoginCtrl',LoginCtrl);
@@ -21,10 +22,8 @@ angular.module('eventPlannerApp')
     			.then(function(userData){
     				console.log("User Registration successfull with the following details",userData.uid);
             var addUserInEventsDb = firebase.database().ref().child('events');
-            addUserInEventsDb.set({
-              id:userData.uid
-            })
             $rootScope.userId = userData.uid;
+            $rootScope.userName = $scope.newUserFullname;
              $state.go('addevent');
             
     			})

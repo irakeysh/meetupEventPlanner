@@ -1,5 +1,34 @@
-<p>This is the home view.</p>
-<div ng-controller="HomeCtrl">
-	<div ng-repeat="eventsData in events">{{eventsData.$id}}:<br>{{eventsData.Host}}
-										</div>
+<div ng-controller="HomeCtrl" >
+	<div style="padding:auto" flex>
+	<input type="text" ng-model="eventname" style="width:50%;height:40px;font-size:21px;font-family: 'Raleway'; border:2px solid #A1B5D8"  flex="60" flex-offset="20" placeholder="Search your event here...">
+	<ng-md-icon icon="search" size="32" style="fill: #A1B5D8"></ng-md-icon>
+	</div>
+	<div class="row">
+	<div class="col-md-4 md-whiteframe-4dp eventBox  md-hue-1" ng-repeat="eventsData in events|filter:eventname" style="margin:15px">
+		<h2><center>{{eventsData.$id}}</center></h2>
+		<md-divider></md-divider>
+		<h4><strong>Host:&nbsp&nbsp</strong>{{eventsData.host}}</h4>
+		<h4><strong>Starts:&nbsp&nbsp</strong>{{eventsData.start}}</h4>
+		<h4><strong>Ends:&nbsp&nbsp</strong>{{eventsData.end}}</h4>
+		<h4><strong>Theme:&nbsp&nbsp</strong>{eventsData.theme}}</h4>
+		<h4><strong>Address:&nbsp&nbsp</strong>{{eventsData.place}}</h4>
+		<md-divider></md-divider>
+	</div>
+	</div>
 </div>
+
+<style type="text/css">
+	.eventBox{
+		border:2px solid black;
+		background-color: #8514ef;
+		font-family: 'Baloo Paaji', cursive;
+		color:#f5e8ed;
+	}
+	.eventBox h2 {
+		color: #e3f56a;
+		font-family: 'Fjalla One', sans-serif;
+	}
+</style>
+<style>
+@import 'https://fonts.googleapis.com/css?family=Baloo+Paaji|Fjalla+One';
+</style>
