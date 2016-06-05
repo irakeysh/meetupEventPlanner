@@ -15,4 +15,5 @@
   angular.module('eventPlannerApp')
          .run(function($rootScope){
           $rootScope.events=[];
+          $rootScope.userId = null;
          });

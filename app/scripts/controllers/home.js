@@ -9,8 +9,10 @@
  */
 angular.module('eventPlannerApp')
   .controller('HomeCtrl',HomeCtrl);
-  HomeCtrl.$inject = ['$firebaseArray','$rootScope','$scope'];
-  function HomeCtrl($firebaseArray,$rootScope,$scope){
+  HomeCtrl.$inject = ['$firebaseArray','$rootScope','$scope','$state'];
+  function HomeCtrl($firebaseArray,$rootScope,$scope,$state){
+    if($scope.userId==null)
+       $state.go('login');
   	var loadEvents = firebase.database().ref().child('Events');
   	var totalEvents = $firebaseArray(loadEvents);
   	console.log(totalEvents);

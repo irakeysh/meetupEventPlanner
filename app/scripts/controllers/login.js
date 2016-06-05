@@ -7,15 +7,14 @@
  * # LoginCtrl
  * Controller of the eventPlannerApp
  */
- angular.module('eventPlannerApp').run(function($rootScope){
-  $rootScope.userId = null;
-  $rootScope.userName = null;
- })
+ 
 angular.module('eventPlannerApp')
   .controller('LoginCtrl',LoginCtrl);
   LoginCtrl.$inject = ['$scope', '$rootScope', '$location', 'APP_SETTINGS', '$firebaseAuth','$state','$firebaseObject'];
 
   function LoginCtrl($scope, $rootScope, $location, APP_SETTINGS, $firebaseAuth,$state,$firebaseObject) {
+    if($scope.userId!=null)
+          $state.go('home');
     var auth = firebase.auth();
     $scope.registerUser = function(){
     	auth.createUserWithEmailAndPassword($scope.newUserEmail,$scope.newUserPassword)
@@ -24,6 +23,7 @@ angular.module('eventPlannerApp')
             var addUserInEventsDb = firebase.database().ref().child('events');
             $rootScope.userId = userData.uid;
             $rootScope.userName = $scope.newUserFullname;
+            console.log($rootScope.userId);
              $state.go('addevent');
             
     			})
