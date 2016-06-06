@@ -13,7 +13,7 @@ angular.module('eventPlannerApp')
   LoginCtrl.$inject = ['$scope', '$rootScope', '$location', 'APP_SETTINGS', '$firebaseAuth','$state','$firebaseObject'];
 
   function LoginCtrl($scope, $rootScope, $location, APP_SETTINGS, $firebaseAuth,$state,$firebaseObject) {
-    if($scope.userId!=null)
+    if($rootScope.userId!=null)
           $state.go('home');
     var auth = firebase.auth();
     $scope.registerUser = function(){

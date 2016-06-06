@@ -14,7 +14,7 @@ angular.module('eventPlannerApp')
   AddeventCtrl.$inject = ['$scope','$firebaseObject','$rootScope','$state'];
 
   function AddeventCtrl($scope,$firebaseObject,$rootScope,$state){
-    if($scope.userId==null)
+    if($rootScope.userId==null)
        $state.go('login');
   	$scope.uploadEvent = function(){
   		console.log($scope.eventName);

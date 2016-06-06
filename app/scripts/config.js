@@ -17,3 +17,20 @@
           $rootScope.events=[];
           $rootScope.userId = null;
          });
+
+angular.module('eventPlannerApp')
+        .controller('navBarCtrl',['$firebaseAuth','$state','$scope','$rootScope',function($firebaseAuth,$state,$scope,$rootScope){
+             $scope.signout = function(){
+             firebase.auth().signOut().then(function() {
+                console.log('You have Sign Out successfully.');
+                 $rootScope.userId = null;
+                 $state.go('login');
+
+                }, function(error) {
+                   console.error('Sign Out Error', error);
+});
+
+             }
+        }])
+
+       
