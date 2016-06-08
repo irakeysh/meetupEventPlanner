@@ -24,7 +24,7 @@ angular.module('eventPlannerApp')
             $rootScope.userId = userData.uid;
             $rootScope.userName = $scope.newUserFullname;
             console.log($rootScope.userId);
-             $state.go('addevent');
+             $state.go('home');
             
     			})
     			.catch(function(error){
@@ -37,7 +37,7 @@ angular.module('eventPlannerApp')
           .then(function(userData){
             console.log("User Login successfull with the following details",userData.uid);
              $rootScope.userId = userData.uid;
-            $state.go('addevent');
+            $state.go('home');
           })
           .catch(function(error){
             console.log("Error with the error:",error);
