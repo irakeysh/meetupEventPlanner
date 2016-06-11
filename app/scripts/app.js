@@ -14,5 +14,6 @@ angular
     'ngAria',
     'firebase',
     'ui.router',
-    'ngMaterial'
+    'ngMaterial',
+    'uiGmapgoogle-maps'
   ]);

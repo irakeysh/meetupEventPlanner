@@ -2,6 +2,7 @@
   <md-content layout-padding class="col-sm-12 col-md-6 col-md-offset-3 md-whiteframe-12dp" style="margin-top:50px">
 <div>
 	<form name="addEvent" layout-gt-sm="column">
+	<div id="googleMap" style="width:500px;height:380px;"></div>
 	<md-input-container class="md-block">
 	<label for="eventName">Name of Event</label>
 		<input type="text" id="eventName" ng-model="eventName" required>
@@ -33,3 +34,12 @@
 </div>
 </md-content>
 </div>
+<script type="text/javascript">
+function initialize() {
+
+var input = document.getElementById('location');
+var autocomplete = new google.maps.places.Autocomplete(input);
+}
+
+initialize();
+</script>
