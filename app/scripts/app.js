@@ -15,5 +15,6 @@ angular
     'firebase',
     'ui.router',
     'ngMaterial',
-    'uiGmapgoogle-maps'
+    'uiGmapgoogle-maps',
+    'ngMessages'
   ]);

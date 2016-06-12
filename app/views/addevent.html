@@ -1,7 +1,7 @@
-<div  ng-controller="AddeventCtrl" layout="column" ng-cloak class="md-inline-form">
-  <md-content layout-padding class="col-sm-12 col-md-6 col-md-offset-3 md-whiteframe-12dp" style="margin-top:50px">
+<div  class="backgroundStyle" ng-controller="AddeventCtrl" layout="column" ng-cloak class="md-inline-form" style="margin-top:1vh;">
+  <md-content layout-padding class="col-sm-12 col-md-6 col-md-offset-3 md-whiteframe-12dp">
 <div>
-	<form name="addEvent" layout-gt-sm="column">
+	<form name="addEvent" layout-gt-sm="column" id="addEvent">
 	<md-input-container class="md-block">
 	<label for="eventName">Name of Event</label>
 		<input type="text" id="eventName" ng-model="eventName" required>
@@ -9,16 +9,24 @@
 	<div layout-gt-sm="row" layout-align="center">
 	<md-input-container class="md-block" >
 	<label for="startDate">Starts</label>
-		<input type="datetime-local" id="startDate" ng-model="startDateTime" required>
+		<md-datepicker type="datetime-local" id="startDate" ng-model="startDateTime" required> </md-datepicker>
+	</md-input-container>
+	<md-input-container class="md-block">
+	<label for="eventName">Start Time:</label>
+		<input type="time" id="eventStartTime" ng-model="eventStartTime" required>
 	</md-input-container>
 	<md-input-container class="md-block">
 	<label for="endDate">Ends</label>
-		<input type="datetime-local" id="endDate" ng-model="endDateTime" required>
+		<md-datepicker type="datetime-local" id="endDate" ng-model="endDateTime" required></md-datepicker>
+	</md-input-container>
+	<md-input-container class="md-block">
+	<label for="eventName">End Time:</label>
+		<input type="time" id="eventEndTime" ng-model="eventEndTime" required>
 	</md-input-container>
 	</div>
 	<md-input-container class="md-block">
 	<label for="location">Place</label>
-		<input type="text" id="location" ng-model="location" required>
+		<input type="text" id="location" ng-model="location" required placeholder="">
 	</md-input-container>
 	<md-input-container class="md-block">
 	<label for="eventTheme">Theme</label>
@@ -28,7 +36,7 @@
 	<label for="guestList">Guests</label>
 		<input type="text" id="guestList" ng-model="guestList" required>
 	</md-input-container>
-	<md-button class="md-accent md-raised md-hue-1" ng-click="uploadEvent()">Upload Event</md-button>		
+	<md-button class="md-accent md-raised LoginFormStyling" ng-click="uploadEvent()">Upload Event</md-button>		
 	</form>
 </div>
 </md-content>

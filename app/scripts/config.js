@@ -31,7 +31,15 @@
     });
 
 angular.module('eventPlannerApp')
-        .controller('navBarCtrl',['$firebaseAuth','$state','$scope','$rootScope',function($firebaseAuth,$state,$scope,$rootScope){
+        .controller('navBarCtrl',['$firebaseAuth','$state','$scope','$rootScope','$state',function($firebaseAuth,$state,$scope,$rootScope,$state){
+             $rootScope.newEventButton = false;
+             $rootScope.homeButton = false;
+             $scope.toHome = function(){
+              $state.go('home');
+             }
+             $scope.toAddEvent = function(){
+              $state.go('addevent');
+             }
              $scope.signout = function(){
              firebase.auth().signOut().then(function() {
                 console.log('You have Sign Out successfully.');
@@ -43,6 +51,7 @@ angular.module('eventPlannerApp')
 });
 
              }
+             
         }]);
 
        

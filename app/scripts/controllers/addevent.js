@@ -16,6 +16,8 @@ angular.module('eventPlannerApp')
   function AddeventCtrl($scope,$firebaseObject,$rootScope,$state){
     if($rootScope.userId==null)
        $state.go('login');
+    $rootScope.addEventButton = false;
+    $rootScope.homeButton = true;
   	$scope.uploadEvent = function(){
   		console.log($scope.eventName);
   		var addEvent = firebase.database().ref().child('Events');
