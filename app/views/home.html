@@ -3,14 +3,16 @@
 	<div class="col-sm-1"></div>
 	<div class="col-sm-11">
 	<div class="col-sm-3 eventBox md-whiteframe-6dp" ng-repeat="eventsData in events |filter:eventname" style="" layout-margin>
-		<h2><center>{{eventsData.$id}}</center></h2>
+		<h2><center>{{eventsData.eventname}}</center></h2>
 		<md-divider></md-divider>
 		<h4><strong>Host:&nbsp&nbsp</strong>{{eventsData.host}}</h4>
-		<h4><strong>Starts:&nbsp&nbsp</strong>{{eventsData.start}}</h4>
-		<h4><strong>Ends:&nbsp&nbsp</strong>{{eventsData.end}}</h4>
+		<h4><strong>Starts:&nbsp&nbsp</strong>{{eventsData.start}}&nbsp&nbsp{{eventsData.startTime}}</h4>
+		<h4><strong>Ends:&nbsp&nbsp</strong>{{eventsData.end}}&nbsp&nbsp{{eventsData.endTime}}</h4>
 		<h4><strong>Theme:&nbsp&nbsp</strong>{eventsData.theme}}</h4>
 		<h4><strong>Address:&nbsp&nbsp</strong>{{eventsData.place}}</h4>
+		<h4><strong>Guests:&nbsp&nbsp</strong>{{eventsData.guest}}</h4>
 		<md-divider></md-divider>
+		<center><md-button class="md-primary md-hue-1 LoginFormStyling">View Venue</md-button></center>
 	</div>
 	</div>
 	<div class="col-sm-1"></div>
