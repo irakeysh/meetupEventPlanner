@@ -6,30 +6,38 @@
         <div layout-gt-sm="column">
           <md-input-container class="md-block" flex-gt-sm>
             <label>Full Name</label>
-            <input type="text"  ng-model="newUserFullname" name="newUserFullname" required minlength="2" maxlength="35">
-            <div ng-messages="regForm.newUserFullname.$error" role="alert">
+            <input type="text"  ng-model="newUserFullname" name="newUserFullname" required minlength="3" maxlength="35">
+          </md-input-container>
+          <div  class="errorMessage" ng-messages="regForm.newUserFullname.$error" role="alert" ng-if="regForm.newUserFullname.$dirty">
               <span ng-message="required">Name cannot be empty.</span>
-              <span ng-message="minlength">Name must contain atleast two characters.</span>
+              <span ng-message="minlength">Name must contain atleast three characters.</span>
               <span ng-message="maxlength">Too long name. Please enter first and last name only</span>
             </div>
-          </md-input-container>
           <md-input-container class="md-block" flex-gt-sm>
             <label>Email</label>
-            <input type="email" ng-model="newUserEmail" required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$">
-            <div ng-messages="regForm.newUserEmail.$error" role="alert">
+            <input type="email" ng-model="newUserEmail" name="newUserEmail" required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$">
+          </md-input-container>
+           <div class="errorMessage" ng-messages="regForm.newUserEmail.$error" role="alert" ng-if="regForm.newUserEmail.$dirty">
               <span ng-message="required">Email cannot be left empty.</span>
               <span ng-message="pattern">Enter a valid email address</span>
             </div>
-          </md-input-container>
-          <md-input-container class="md-block" flex-gt-sm>
+          <md-input-container class="md-block" flex-gt-sm >
             <label>Password</label>
-            <input type="password" ng-model="newUserPassword" required>
+            <input type="password" ng-model="newUserPassword" name="newUserPassword" required minlength="8" maxlength="16">
           </md-input-container>
+          <div class="errorMessage" ng-messages="regForm.newUserPassword.$error" role="alert" ng-if="regForm.newUserPassword.$dirty">
+            <span ng-message="required">Password cannot be left empty.</span>
+            <span ng-message="minlength">Too short password. Use atleast 8 characters</span>
+            <span ng-message="maxlength">Too long password. Use 8 -16 characters</span>
+          </div>
           <md-input-container class="md-block" flex-gt-sm>
             <label>Confirm Password</label>
-            <input type="password" ng-model="confirm" required>
+            <input type="password" name="confirm" ng-model="confirm" required>
           </md-input-container>
-        <md-button class="md-accent md-raised LoginFormStyling" ng-click="registerUser()">Register Me</md-button>
+          <div class="errorMessage">
+             <span ng-if="confirm!=newUserPassword&&regForm.confirm.$dirty">Passwords not matching</span>
+          </div>
+        <md-button ng-disabled="!newUserPassword||!newUserFullname||!newUserEmail||!confirm||confirm!=newUserPassword" class="md-accent md-raised LoginFormStyling" ng-click="registerUser()">Register Me</md-button>
         </div>
         <span class="LoginFormStyling">
         Already Registered?<a id="showLoginForm"><md-button class="md-primary LoginFormStyling">Login Now</md-button></a>
@@ -39,13 +47,20 @@
         <div layout-gt-sm="column">
           <md-input-container class="md-block" flex-gt-sm>
             <label>Email</label>
-            <input type="text" ng-model="activeUserEmail" required>
+            <input type="email" ng-model="activeUserEmail" name="activeUserEmail" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" required>
           </md-input-container>
+          <div class="errorMessage" ng-messages="loginForm.activeUserEmail.$error" role="alert" ng-if="loginForm.activeUserEmail.$dirty">
+              <span ng-message="required">Email cannot be left empty.</span>
+              <span ng-message="pattern">Enter a valid email address</span>
+          </div>
           <md-input-container class="md-block" flex-gt-sm>
             <label>Password</label>
-            <input type="password" ng-model="activeUserPassword" required>
+            <input type="password" ng-model="activeUserPassword" name="activeUserPassword" required>
           </md-input-container>
-        <md-button class="md-accent md-raised LoginFormStyling" ng-click="loginUser()">Let Me In</md-button>
+          <div class="errorMessage" ng-messages="loginForm.activeUserPassword.$error" role="alert" ng-if="loginForm.activeUserPassword.$dirty">
+            <span ng-message="required">Password cannot be left empty.</span>
+          </div>
+        <md-button class="md-accent md-raised LoginFormStyling" ng-disabled="!activeUserEmail||!activeUserPassword" ng-click="loginUser()">Let Me In</md-button>
         </div>
         <span class="LoginFormStyling">
         Not Registered?<a id="showRegForm"><md-button class="md-primary LoginFormStyling">Register Now</md-button></a>

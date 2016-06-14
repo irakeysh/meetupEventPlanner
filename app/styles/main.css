@@ -36,3 +36,9 @@ md-toolbar{
 	color: #191919;
 	font-family: 'Dosis';
 }
+.errorMessage span{
+	font-family: 'Economica', cursive;
+	float: right;
+	font-size: 20px;
+	color: red;
+}

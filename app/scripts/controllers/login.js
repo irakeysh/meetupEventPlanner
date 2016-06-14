@@ -10,9 +10,9 @@
  
 angular.module('eventPlannerApp')
   .controller('LoginCtrl',LoginCtrl);
-  LoginCtrl.$inject = ['$scope', '$rootScope', '$location', 'APP_SETTINGS', '$firebaseAuth','$state','$firebaseObject'];
+  LoginCtrl.$inject = ['$scope', '$rootScope', '$location', 'APP_SETTINGS', '$firebaseAuth','$state','$firebaseObject','$mdToast'];
 
-  function LoginCtrl($scope, $rootScope, $location, APP_SETTINGS, $firebaseAuth,$state,$firebaseObject) {
+  function LoginCtrl($scope, $rootScope, $location, APP_SETTINGS, $firebaseAuth,$state,$firebaseObject,$mdToast) {
     if($rootScope.userId!=null)
           $state.go('home');
     var auth = firebase.auth();
@@ -38,9 +38,11 @@ angular.module('eventPlannerApp')
             console.log("User Login successfull with the following details",userData.uid);
              $rootScope.userId = userData.uid;
             $state.go('home');
+          },function(){
+            $mdToast.show($mdToast.simple().textContent("Authentication failed. Invalid username or password.")
+                                            .hideDelay(10000));
           })
-          .catch(function(error){
-            console.log("Error with the error:",error);
-          })
+
+           
+          }
     };
-};
