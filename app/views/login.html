@@ -47,7 +47,7 @@
         <div layout-gt-sm="column">
           <md-input-container class="md-block" flex-gt-sm>
             <label>Email</label>
-            <input type="email" ng-model="activeUserEmail" name="activeUserEmail" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" required>
+            <input type="email" autocomplete="on" ng-model="activeUserEmail" name="activeUserEmail" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" required>
           </md-input-container>
           <div class="errorMessage" ng-messages="loginForm.activeUserEmail.$error" role="alert" ng-if="loginForm.activeUserEmail.$dirty">
               <span ng-message="required">Email cannot be left empty.</span>
@@ -55,7 +55,7 @@
           </div>
           <md-input-container class="md-block" flex-gt-sm>
             <label>Password</label>
-            <input type="password" ng-model="activeUserPassword" name="activeUserPassword" required>
+            <input type="password" ng-model="activeUserPassword" name="activeUserPassword" autocomplete="on" required>
           </md-input-container>
           <div class="errorMessage" ng-messages="loginForm.activeUserPassword.$error" role="alert" ng-if="loginForm.activeUserPassword.$dirty">
             <span ng-message="required">Password cannot be left empty.</span>

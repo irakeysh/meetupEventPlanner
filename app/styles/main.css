@@ -21,11 +21,12 @@ md-toolbar{
 
 .eventBox{
   width:300px; 
-  height:300px; 
+  height:350px; 
   background-color:#FAFDF6;
   text-align:justify; 
   padding:10px;
   color:#E4FDE1;
+  overflow-y: auto;
 }
 
 .eventBox h2{

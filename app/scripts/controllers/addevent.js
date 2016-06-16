@@ -17,20 +17,33 @@ angular.module('eventPlannerApp')
     if($rootScope.userId==null)
        $state.go('login');
     $rootScope.addEventButton = false;
+     $scope.eventLocation = {'address': '', 'Lat': '', 'Lng' : ''};
     $rootScope.homeButton = true;
+    var addressBox = document.getElementById("location");
+    var addressInput = new google.maps.places.Autocomplete(addressBox);
+    google.maps.event.addListener(addressInput, 'place_changed', function() {
+        var place = addressInput.getPlace();
+        $scope.eventLocation.Lat = place.geometry.location.lat();
+        $scope.eventLocation.Lng = place.geometry.location.lng();
+        $scope.eventLocation.address = place.formatted_address;
+        $scope.$apply();
+    });
   	$scope.uploadEvent = function(){
   		console.log($scope.eventName);
   		var addEvent = firebase.database().ref().child('Events');
   	   addEvent.push({
   		  eventname:$scope.eventName,
         host:$scope.hostName,
-        place:$scope.location,
+        physcialAddress:$scope.eventLocation.address,
+        lng:$scope.eventLocation.Lat,
+        lat:$scope.eventLocation.Lng,
         starts:$scope.startDate,
         startTime:$scope.eventStartTime,
         ends:$scope.endDate,
         endTime:$scope.eventEndTime,
         theme:$scope.eventTheme,
-        guest:$scope.guestList
+        guest:$scope.guestList,
+
 
     }).then(function(){
            var confirm = $mdDialog.confirm().title("Event Upload Suceessfull").ariaLabel("Event Upload Suceessfull")
