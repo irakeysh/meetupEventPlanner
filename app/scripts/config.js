@@ -10,26 +10,9 @@
     databaseURL: "https://meetupeventplanner-84795.firebaseio.com",
     storageBucket: "meetupeventplanner-84795.appspot.com",
   };
+
   firebase.initializeApp(config);
-
-  angular.module('eventPlannerApp')
-         .run(function($rootScope,$firebaseArray){
-          $rootScope.events=[];
-          $rootScope.userId = null;
-          console.log("testing testing");
-          var loadEvents = firebase.database().ref().child('Events');
-          var totalEvents = $firebaseArray(loadEvents);
-          console.log(totalEvents);
-          totalEvents.$loaded()
-            .then(function(){
-              console.log("hi1");
-              angular.forEach(totalEvents,function(totalEvents){
-                 $rootScope.events.push(totalEvents);
-
-              })
-         });
-    });
-
+  
 angular.module('eventPlannerApp')
         .controller('navBarCtrl',['$firebaseAuth','$state','$scope','$rootScope','$state',function($firebaseAuth,$state,$scope,$rootScope,$state){
              $rootScope.newEventButton = false;

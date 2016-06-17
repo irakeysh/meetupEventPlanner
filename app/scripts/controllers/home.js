@@ -13,7 +13,22 @@ angular.module('eventPlannerApp')
   function HomeCtrl($firebaseArray,$rootScope,$scope,$state){
     if($rootScope.userId==null)
        $state.go('login');
+   var loadEvents = firebase.database().ref().child('Events');
+   loadEvents.on('value',function(snapshot){
+   	   $rootScope.events = [];
+   	snapshot.forEach(function(childSnapshot) {
+                    $rootScope.events.push(childSnapshot.val());
+                });
+   				console.log("Update successfull");
+            }, function (errorObject) {
+                console.log("The read failed: " + errorObject.code);
+            });
+
    $rootScope.homeButton = false;
    	$rootScope.addEventButton =true;
+
+   	$scope.showMap = function(lat,lng){
+   		console.log(lat,lng);
+   	}
     
   					};
